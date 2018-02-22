@@ -2,6 +2,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 from mpl_toolkits.mplot3d import Axes3D
 from matplotlib import animation
+import sys
 
 class LinearRegression:
     
@@ -126,7 +127,10 @@ def plot_mesh_contour(type, lr):
 if __name__=='__main__':
     
     #create a linear regression object
-    lr = LinearRegression("linearX.csv","linearY.csv")
+    if(len(sys.argv)==3):
+        lr = LinearRegression(sys.argv[1],sys.argv[2])
+    else:
+        lr = LinearRegression("linearsX.csv","linearY.csv")
     
     #normalize data to 0 mean and 1 standard deviation
     lr.NormalizeData()
